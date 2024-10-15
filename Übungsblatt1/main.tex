@@ -1,0 +1,144 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+\title{Lineare Algebra Übungszettel 1}
+\author{Moritz Brand, Lian Bubolz}
+\date{}
+
+% This line here is a comment. It will not be typeset in the document.
+
+\begin{document}
+\maketitle
+\paragraph{Aufgabe H1.}
+
+Seien $A, B, X, Y$ Mengen, und sei $f : X \to  Y$ eine Abbildung. 
+Geben Sie für jede der folgenden Behauptungen einen Beweis oder ein Gegenbeispiel an:
+
+\begin{enumerate}
+
+    \item Für alle Teilmengen $Y_1$ und $Y_2$ von $Y$ gilt: 
+        $f^{-1}(Y_1 \cup Y_2) = f^{-1}(Y_1) \cup f^{-1}(Y_2)$.
+
+    \item Für alle Teilmengen $X_1$ und $X_2$ von $X$ gilt: 
+        $f(X_1 \cap X_2) = f(X_1) \cap  f(X_2)$.
+
+    \item Für alle $X'\subseteq X$ und $Y'\subseteq Y$ gilt $f(X' \cap f^{-1}(Y')) = f(X') \cap Y'$.
+    \item $(A \times X) \cap (B \times Y) = (A \cap B) \times (X \cap Y)$. 
+    \item $(A \times X) \cup (B \times Y) = (A \cup B) \times (X \cup Y)$. 
+
+\end{enumerate} 
+ 
+\begin{proof}
+    \hspace*{10mm} \par
+
+    \begin{enumerate}
+
+        
+
+        \item Für alle Teilmengen $Y_1$ und $Y_2$ von $Y$ gilt: 
+            $f^{-1}(Y_1 \cup Y_2) = f^{-1}(Y_1) \cup f^{-1}(Y_2)$.
+
+        \item Sei $X = \{-1,1\}$ mit $X_1 = \{-1\}, \ X_2=\{1\}$, $Y = \{1\}$ und die Abbildung $f : X \to  Y$ durch $x\mapsto 1$ definiert.
+        Dann ist per Definition $X_1 \cap X_2 = \emptyset$ und dadurch auch $f(X_1 \cap X_2) = \emptyset$. 
+        
+        Doch $f(X_1) \cap  f(X_2) = \{1\}$ wodurch die Behauptung widerlegt wurde.
+    \end{enumerate} 
+
+\end{proof} 
+
+\paragraph{Aufgabe H2.}
+
+Sei $X \neq \emptyset $ eine endliche Menge und sei $f : X \rightarrow X$ eine Abbildung.
+Zeigen Sie: Es existiert ein $m \geq  1$ mit der Eigenschaft: Es gibt ein $x \in X$ mit
+$f^m(x) = x$. ($f^m = f \circ \cdots \circ f$ ist die $m$-fache Komposition von $f$).
+
+\begin{proof}
+    Wir teilen den Beweis in keine Surjektivität und Surjektivität auf: \par
+    Wenn $f(x)$ nicht surjektiv ist $\exists! a \in X : \forall  n \geq |X|, n \in \mathbb{N}$, $: f^n(x)=a $, 
+    da $X$ endlich ist und (aufgrund der fehlenden Surjektivität) $\forall  b < (|X|-1), b \in \mathbb{N}$ : $|f^{b+1}(X)| < |f^b(X)|$.
+    In diesem Fall wählen wir $x=a$  und $m=|X|$. \par
+    Ist $f(x)$ surjektiv, wählen wir ein beliebiges, festes $x \in X$, wofür zwangsläufig $x \in F=\{f(x),\ldots,f^{|X|+1}(x)\}$ gilt, 
+    da es nur $|X-1|$ Elemente ungleich $x$  in $f(X)$ gibt, aber $|X|$ Elemente in der Menge $F$.
+    Nummerieren wir die Elemente in $F$ mit $i\in\{0,1,\ldots,n+1\}$, wählen wir $m$ so, dass $m = min(\{n | f^n(x)=x \land n>0 \})$
+    und haben so, per Definition, eine m-fache Komposition für die $f^m(x)=x$ gilt.
+\end{proof}
+
+\paragraph{Aufgabe H3.}
+
+Sei $K$ ein Körper. Zeigen Sie:
+\par
+    (i) Zu jedem $a \in K$ gibt es nur ein Element $b \in K$ mit $a + b = 0$;\\ Für alle $a, b, c, d \in K$ gilt:\par
+(ii) Falls $ab = 0$, so gilt $a = 0$ oder $b = 0$, d.h. $K$ ist nullteilerfrei; \par
+(iii) $a/b + c/d = (ad + bc)/(bd)$ falls $b \neq 0$ und $d \neq 0$; \par
+(iv) $(-a)(-b) = ab$; \par
+(v) $-(-a) = a$. \\ \\  
+(Geben Sie in jedem Schritt an, welches der Axiome $(A1), \ldots , (A4), (M 1), \ldots , (M 4), (D)$
+Sie benutzen.)
+
+\begin{proof} Wir nutzen in jedem Beweis Kommutativität (A2)
+    \hspace*{10mm} \par
+    (i) Annahme: $\exists b,b' \in K : a+b=0=a+b'$ 
+        \par
+        $\Rightarrow b \overset{\text{(A3)}}{=} b + 0 \overset{\text{(A4)}}{=} b + (a + b') \overset{\text{(A1)}}{=} 
+        (b + a) + b' \overset{\text{(A4)}}{=} 0 + b' \overset{\text{(A3)}}{=} b' $
+    \par
+    (ii) Annahme: $\exists a,b \in K : a \neq 0 \neq b$ $\land$ $ab=0$ 
+        \par
+        $\Rightarrow 0 \overset{\text{(Lemma 2.3)}}{=} 0((ab)^{-1}) \overset{\text{(Annahme)}}{=} 
+        (ab)(ab)^{-1} \overset{\text{(M4)}}{=} 1$ Widerspruch zu (M3) $\Rightarrow a=0 \lor b = 0$
+    \par
+    (iii) $ab^{-1}+cd^{-1} \overset{\text{( )}}{=} (ad + bc)(bd)^{-1}$ AHHHHHHHHHHHHHHHHH
+        \par
+    (iv) $(-a)(-b) \overset{\text{(A3)}}{=} 0 + (-a)(-b) \overset{\text{(Lemma 2.3)}}{=} 0(-b)+(-a)(-b) \overset{\text{(A4)}}{=}
+        (a+(-a))(b)+(-a)(-b) \overset{\text{(D)}}{=}$ \par \hspace*{7mm}   $ab +(-a)b+(-a)(-b) \overset{\text{(D)}}{=} 
+        ab+(-a)(b+(-b)) \overset{\text{(A4)}}{=} ab+(-a)0 \overset{\text{(Lemma 2.3, A3)}}{=} ab$ 
+    \par
+    (v) $-(-a) \overset{\text{(A3)}}{=} -(-a) + 0 \overset{\text{(A4)}}{=} -(-a) + ((-a)-a+) 
+        \overset{\text{(A1)}}{=} (-(-a)+(-a))+a \overset{\text{(A4)}}{=} 0 + a \overset{\text{(A3)}}{=} a$
+    \par
+\end{proof}
+
+
+\paragraph{Aufgabe H4.}
+
+Sei $K$ ein Körper, und sei $K^\times  := K \setminus  \{0\}$. Zeigen Sie: Es gibt keine
+bijektive Abbildung $e : K \to K^\times$ mit $e(a + b) = e(a)e(b)$ für alle $a, b \in  K$. Sie
+dürfen verwenden, dass das Polynom $X^2 - 1$ in $K$ nur die Nullstellen $1$ und $-1$ hat.
+Den Fall $char(K) = 2$  (d.h. $1 + 1 = 0$) sollte man getrennt betrachten.
+
+\begin{proof} 
+    Wir zeigen per Widerspruchsbeweis, dass es keine bijektive Abbildung geben kann:
+    \\ \\
+    Annahme: Es gibt eine bijektive Abbildung.
+    \\ \\
+    $\exists x \in K : e(x) = (-1) \Rightarrow e(x+x)=(-1)(-1) \overset{\text{(H3)}}{=} 1_{K^\times} $
+    \\ \\ 
+    Sei $y \in K$, $y\neq 0_K$, $e(0_K + y) = e(0_K)e(y) \Leftrightarrow  e(y) = e(0_K)e(y) \Rightarrow e(0_K) = 1_{K^\times} $
+    \\ \\
+    $\Rightarrow e(x+x) = e(0_K) \overset{\text{($e^{-1}$)}}{\Rightarrow} x+x = 0_K $
+    \\ \\
+    Wenn $x+x = 0_K$, dann gilt $0_K=(x+x)x^{-1} = 1_K+1_K \Rightarrow char(K)=2 $
+    \\ \\
+    $\Rightarrow 1_{K^\times} = e(0_K) = e(1_K+1_K) = e(1_K)e(1_K) = e(1_K)^2 $
+    \\ \\
+    Wir wissen, dass das Polynom $X^2 - 1$ nur die Nullstellen $1$ und $-1$ hat.
+    \\ \\
+    $\Rightarrow e(1_K) = 1_K = e(0_K) \Rightarrow 1_K = 0_K $ was ein Widerspruch zu den Körperaxiomen ist. 
+
+   
+\end{proof}
+
+
+
+
+
+\end{document}
