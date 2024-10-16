@@ -11,7 +11,7 @@
 \usepackage{amsmath}
 
 \title{Lineare Algebra Übungszettel 1}
-\author{Moritz Brand, Lian Bubolz}
+\author{Moritz Brand, Lian Bubolz tzttt}
 \date{}
 
 % This line here is a comment. It will not be typeset in the document.
@@ -51,6 +51,10 @@ Geben Sie für jede der folgenden Behauptungen einen Beweis oder ein Gegenbeispi
         Dann ist per Definition $X_1 \cap X_2 = \emptyset$ und dadurch auch $f(X_1 \cap X_2) = \emptyset$. 
         
         Doch $f(X_1) \cap  f(X_2) = \{1\}$ wodurch die Behauptung widerlegt wurde.
+
+        \item AHHHHHHHHH
+        \item AHHHHHHHHH
+        \item AHHHHHHHHH
     \end{enumerate} 
 
 \end{proof} 
@@ -63,11 +67,12 @@ $f^m(x) = x$. ($f^m = f \circ \cdots \circ f$ ist die $m$-fache Komposition von 
 
 \begin{proof}
     Wir teilen den Beweis in keine Surjektivität und Surjektivität auf: \par
-    Wenn $f(x)$ nicht surjektiv ist $\exists! a \in X : \forall  n \geq |X|, n \in \mathbb{N}$, $: f^n(x)=a $, 
-    da $X$ endlich ist und (aufgrund der fehlenden Surjektivität) $\forall  b < (|X|-1), b \in \mathbb{N}$ : $|f^{b+1}(X)| < |f^b(X)|$.
+    (1) Wenn $f(x)$ nicht surjektiv ist $\exists! a \in X : \forall  n \geq |X|, n \in \mathbb{N}$, $: f^n(x)=a $, 
+    da $X$ endlich ist und aufgrund der fehlenden Surjektivität ($\exists q \in X : \forall p \in X : q \neq f(p) \Rightarrow |X|>|f(X)|) $) 
+    $\forall  b < (|X|)/(|X|-|f(X)|), b \in \mathbb{N}$ : $|f^{b+1}(X)| < |f^b(X)|$.
     In diesem Fall wählen wir $x=a$  und $m=|X|$. \par
-    Ist $f(x)$ surjektiv, wählen wir ein beliebiges, festes $x \in X$, wofür zwangsläufig $x \in F=\{f(x),\ldots,f^{|X|+1}(x)\}$ gilt, 
-    da es nur $|X-1|$ Elemente ungleich $x$  in $f(X)$ gibt, aber $|X|$ Elemente in der Menge $F$.
+    (2) Ist $f(x)$ surjektiv, wählen wir ein beliebiges, festes $x \in X$, wofür zwangsläufig $x \in F=\{f(x),\ldots,f^{|X|+1}(x)\}$ gilt, 
+    da es nur $|X-1|$ Elemente ungleich $x$  in $f(X)=X$ gibt, aber $|X|$ Elemente in der Menge $F$.
     Nummerieren wir die Elemente in $F$ mit $i\in\{0,1,\ldots,n+1\}$, wählen wir $m$ so, dass $m = min(\{n | f^n(x)=x \land n>0 \})$
     und haben so, per Definition, eine m-fache Komposition für die $f^m(x)=x$ gilt.
 \end{proof}
@@ -84,23 +89,34 @@ Sei $K$ ein Körper. Zeigen Sie:
 (Geben Sie in jedem Schritt an, welches der Axiome $(A1), \ldots , (A4), (M 1), \ldots , (M 4), (D)$
 Sie benutzen.)
 
-\begin{proof} Wir nutzen in jedem Beweis Kommutativität (A2)
-    \hspace*{10mm} \par
+\begin{proof} Wir nutzen in jedem Beweis Kommutativität (A2, M2)
+    \\ \hspace*{10mm} \par
     (i) Annahme: $\exists b,b' \in K : a+b=0=a+b'$ 
         \par
         $\Rightarrow b \overset{\text{(A3)}}{=} b + 0 \overset{\text{(A4)}}{=} b + (a + b') \overset{\text{(A1)}}{=} 
         (b + a) + b' \overset{\text{(A4)}}{=} 0 + b' \overset{\text{(A3)}}{=} b' $
-    \par
+    \\ \par
     (ii) Annahme: $\exists a,b \in K : a \neq 0 \neq b$ $\land$ $ab=0$ 
         \par
         $\Rightarrow 0 \overset{\text{(Lemma 2.3)}}{=} 0((ab)^{-1}) \overset{\text{(Annahme)}}{=} 
         (ab)(ab)^{-1} \overset{\text{(M4)}}{=} 1$ Widerspruch zu (M3) $\Rightarrow a=0 \lor b = 0$
-    \par
-    (iii) $ab^{-1}+cd^{-1} \overset{\text{( )}}{=} (ad + bc)(bd)^{-1}$ AHHHHHHHHHHHHHHHHH
-        \par
+    \\ \par
+    (iii) Seien $ b \neq 0$ und $d \neq 0$ \par \hspace*{7mm} 
+        Lemma 1.1 $(b^{-1}d^{-1})^{-1} = bd $ \par \hspace*{7mm} \hspace*{7mm} 
+        Beweis : $(b^{-1}d^{-1})^{-1} \overset{\text{(M3)}}{=} (b^{-1}d^{-1})^{-1}(1) \overset{\text{(M4)}}{=} (b^{-1}d^{-1})^{-1}((b^{-1}b)(d^{-1}d)) 
+                \overset{\text{(M1,M2)}}{=}$ \par \hspace*{33mm}
+                $(b^{-1}d^{-1})^{-1}(b^{-1}d^{-1})(bd) \overset{\text{(M4)}}{=} 1(bd) \overset{\text{(M3)}}{=} bd $ \\
+
+        \par \hspace*{7mm} 
+        $a/b + c/d \overset{\text{(Schreibweise)}}{=} ab^{-1}+cd^{-1} \overset{\text{(M3)}}{=}
+        1(ab^{-1}+cd^{-1}) \overset{\text{(D)}}{=} 1(ab^{-1}) + 1(cd^{-1}) \overset{\text{(M4)}}{=}$ \par \hspace*{7mm} 
+        $(dd^{-1})(ab^{-1}) + (bb^{-1})(cd^{-1}) \overset{\text{(M1,M2)}}{=} a(b^{-1}d)d^{-1} + c(d^{-1}b)b^{-1}
+        \overset{\text{(M1,M2)}}{=} ad(b^{-1}d^{-1}) + cb(d^{-1}b^{-1}) \overset{\text{(D)}}{=}$ \par \hspace*{7mm}  
+        $b^{-1}d^{-1}((ad)+(cb)) \overset{\text{(Schreibweise)}}{=} (ad + cb)/(b^{-1}d^{-1})^{-1} \overset{\text{(Lemma 1.1)}}{=} (ad + cb)/(bd)$ 
+        \\ \par
     (iv) $(-a)(-b) \overset{\text{(A3)}}{=} 0 + (-a)(-b) \overset{\text{(Lemma 2.3)}}{=} 0(-b)+(-a)(-b) \overset{\text{(A4)}}{=}
         (a+(-a))(b)+(-a)(-b) \overset{\text{(D)}}{=}$ \par \hspace*{7mm}   $ab +(-a)b+(-a)(-b) \overset{\text{(D)}}{=} 
-        ab+(-a)(b+(-b)) \overset{\text{(A4)}}{=} ab+(-a)0 \overset{\text{(Lemma 2.3, A3)}}{=} ab$ 
+        ab+(-a)(b+(-b)) \overset{\text{(A4)}}{=} ab+(-a)0 \overset{\text{(Lemma 2.3, A3)}}{=} ab$ \\
     \par
     (v) $-(-a) \overset{\text{(A3)}}{=} -(-a) + 0 \overset{\text{(A4)}}{=} -(-a) + ((-a)-a+) 
         \overset{\text{(A1)}}{=} (-(-a)+(-a))+a \overset{\text{(A4)}}{=} 0 + a \overset{\text{(A3)}}{=} a$
@@ -119,23 +135,24 @@ Den Fall $char(K) = 2$  (d.h. $1 + 1 = 0$) sollte man getrennt betrachten.
     Wir zeigen per Widerspruchsbeweis, dass es keine bijektive Abbildung geben kann:
     \\ \\
     Annahme: Es gibt eine bijektive Abbildung.
-    \\ \\
+    \\ \par
     $\exists x \in K : e(x) = (-1) \Rightarrow e(x+x)=(-1)(-1) \overset{\text{(H3)}}{=} 1_{K^\times} $
-    \\ \\ 
+    \par
     Sei $y \in K$, $y\neq 0_K$, $e(0_K + y) = e(0_K)e(y) \Leftrightarrow  e(y) = e(0_K)e(y) \Rightarrow e(0_K) = 1_{K^\times} $
-    \\ \\
+    \par
     $\Rightarrow e(x+x) = e(0_K) \overset{\text{($e^{-1}$)}}{\Rightarrow} x+x = 0_K $
-    \\ \\
+    \par
     Wenn $x+x = 0_K$, dann gilt $0_K=(x+x)x^{-1} = 1_K+1_K \Rightarrow char(K)=2 $
-    \\ \\
-    $\Rightarrow 1_{K^\times} = e(0_K) = e(1_K+1_K) = e(1_K)e(1_K) = e(1_K)^2 $
-    \\ \\
-    Wir wissen, dass das Polynom $X^2 - 1$ nur die Nullstellen $1$ und $-1$ hat.
-    \\ \\
-    $\Rightarrow e(1_K) = 1_K = e(0_K) \Rightarrow 1_K = 0_K $ was ein Widerspruch zu den Körperaxiomen ist. 
-
-   
+    \par
+    $\Rightarrow 1_{K^\times} = e(0_K) = e(1_K+1_K) = e(1_K)e(1_K) = e(1_K)^2 $ \\
+    \par
+    Wir wissen, dass das Polynom $X^2 - 1$ nur die Nullstellen $1$ und $-1$ hat. 
+    \par
+    $\Rightarrow e(1_K) = 1_K = e(0_K) \overset{\text{($e^{-1})$}}{\Rightarrow} 1_K = 0_K $ was ein Widerspruch zu den Körperaxiomen ist. \\ 
 \end{proof}
+
+\par
+\textit{Es ist Funktionen-Party. tan(y), log(x) etc. sind gut drauf, tanzen und lachen. Nur $e^x$ steht einsam in der Ecke. log(x): "Was ist denn los?" $e^x$: "Ich versuche mich ja zu integrieren, aber es kommt immer dasselbe dabei raus…"}
 
 
 
